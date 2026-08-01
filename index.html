@@ -140,7 +140,11 @@
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 32px;
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px 32px;
     list-style: none;
     font-family: var(--font-sans);
     font-size: 0.85rem;
@@ -691,8 +695,13 @@
     text-align: center;
   }
 
+  @media (max-width: 900px) {
+    nav { flex-wrap: wrap; row-gap: 14px; }
+    .theme-toggle { order: 2; margin-left: auto; }
+    .nav-links { order: 3; flex-basis: 100%; flex-wrap: wrap; row-gap: 12px; column-gap: 18px; gap: 12px 18px; justify-content: flex-start; }
+  }
+
   @media (max-width: 720px) {
-    nav { flex-direction: column; gap: 14px; align-items: flex-start; }
     .hero { padding: 60px 0 50px; }
     .hero h1 { font-size: 2.1rem; }
     .about-grid, .projects-grid { grid-template-columns: 1fr; }
