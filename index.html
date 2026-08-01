@@ -24,6 +24,10 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="theme-color" content="#1b2a4a">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --navy: #1b2a4a;
@@ -34,6 +38,10 @@
     --muted: #6b6b6b;
     --border: #e3ddd2;
     --max-width: 1080px;
+    --font-display: 'Fraunces', 'Georgia', serif;
+    --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --shadow-sm: 0 1px 3px rgba(27, 42, 74, 0.05), 0 6px 18px rgba(27, 42, 74, 0.04);
+    --shadow-md: 0 4px 10px rgba(27, 42, 74, 0.06), 0 16px 32px rgba(27, 42, 74, 0.08);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,6 +69,7 @@
     top: 0;
     background: var(--cream);
     border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(27, 42, 74, 0.03);
     z-index: 100;
   }
 
@@ -76,9 +85,10 @@
   }
 
   .brand {
-    font-size: 1.25rem;
-    letter-spacing: 0.06em;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
+    font-weight: 600;
     color: var(--navy);
     text-transform: uppercase;
   }
@@ -88,7 +98,7 @@
     align-items: center;
     gap: 32px;
     list-style: none;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -118,16 +128,34 @@
 
   /* Hero */
   .hero {
+    position: relative;
     padding: 100px 0 80px;
     border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "N";
+    position: absolute;
+    top: -0.28em;
+    right: -0.06em;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26rem;
+    line-height: 1;
+    color: var(--navy);
+    opacity: 0.045;
+    pointer-events: none;
+    user-select: none;
   }
 
   .hero-inner {
+    position: relative;
     max-width: 720px;
   }
 
   .hero .eyebrow {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
     text-transform: uppercase;
     letter-spacing: 0.12em;
     font-size: 0.8rem;
@@ -136,9 +164,10 @@
   }
 
   .hero h1 {
-    font-size: 3rem;
+    font-family: var(--font-display);
+    font-size: 3.4rem;
     color: var(--navy);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.15;
     margin-bottom: 18px;
   }
@@ -157,7 +186,7 @@
   }
 
   .btn {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.85rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -196,18 +225,30 @@
   }
 
   .section-head .num {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-sans);
     color: var(--gold);
     font-size: 0.9rem;
     letter-spacing: 0.08em;
   }
 
+  .section-head .num::before {
+    content: "";
+    display: inline-block;
+    width: 22px;
+    height: 1px;
+    background: var(--gold);
+  }
+
   .section-head h2 {
-    font-size: 1.75rem;
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-size: 1.85rem;
+    font-weight: 500;
     color: var(--navy);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
   }
 
   /* About */
@@ -230,7 +271,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px 24px;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.92rem;
   }
 
@@ -254,7 +295,7 @@
   }
 
   .experience-item .meta {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
   }
 
   .experience-item .meta .dates {
@@ -271,14 +312,15 @@
   }
 
   .experience-item .role h3 {
-    font-size: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
     color: var(--navy);
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 4px;
   }
 
   .experience-item .role .company {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.85rem;
     letter-spacing: 0.04em;
     color: var(--navy-light);
@@ -317,14 +359,21 @@
   .project-card {
     background: #fff;
     border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
     padding: 32px;
     display: flex;
     flex-direction: column;
     height: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
   }
 
   .project-card .tag {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.72rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -333,9 +382,10 @@
   }
 
   .project-card h3 {
-    font-size: 1.3rem;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
     color: var(--navy);
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 12px;
   }
 
@@ -347,7 +397,7 @@
   }
 
   .project-card .stack {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.78rem;
     color: var(--navy-light);
     margin-bottom: 18px;
@@ -355,7 +405,7 @@
   }
 
   .project-card a.link {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.82rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -367,6 +417,155 @@
 
   .project-card a.link:hover {
     color: var(--gold);
+  }
+
+  /* Stack */
+  #stack .section-head { margin-bottom: 14px; }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 0.97rem;
+    margin-bottom: 40px;
+    max-width: 640px;
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .stack-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 28px 24px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .stack-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .stack-card .cat {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stack-card ul {
+    list-style: none;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+  }
+
+  .stack-card li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: var(--navy-light);
+  }
+
+  .stack-card li:last-child { margin-bottom: 0; }
+
+  .stack-card li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  .soft-skills {
+    margin-top: 32px;
+  }
+
+  .soft-skills .cat {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .pill {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: var(--navy-light);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .pill:hover {
+    border-color: var(--gold);
+    color: var(--navy);
+  }
+
+  /* Languages */
+  .languages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .language-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 28px 24px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .language-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .language-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--navy);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .language-card .level-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .level-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .level-bar span {
+    display: block;
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
   }
 
   /* Contact */
@@ -383,7 +582,7 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
   }
 
   .contact-links a {
@@ -403,12 +602,17 @@
 
   .contact-links a .arrow {
     font-size: 0.85rem;
+    transition: transform 0.2s ease;
+  }
+
+  .contact-links a:hover .arrow {
+    transform: translateX(4px);
   }
 
   /* Footer */
   footer {
     padding: 32px 0;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.8rem;
     color: var(--muted);
     text-align: center;
@@ -421,6 +625,12 @@
     .about-grid, .projects-grid { grid-template-columns: 1fr; }
     .skills-list { grid-template-columns: 1fr; }
     .experience-item { grid-template-columns: 1fr; gap: 8px; }
+    .stack-grid { grid-template-columns: 1fr 1fr; }
+    .languages-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    .stack-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -433,6 +643,8 @@
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#languages">Languages</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a class="nav-cv" href="assets/Nadi-Kyaw-CV.pdf" target="_blank" rel="noopener">CV</a></li>
     </ul>
@@ -552,10 +764,128 @@
   </div>
 </section>
 
-<section id="contact">
+<section id="stack">
   <div class="container">
     <div class="section-head">
       <span class="num">04</span>
+      <h2>Stack &amp; Skills</h2>
+    </div>
+    <p class="section-sub">Tools and skills across data engineering, analysis, and delivery — plus the soft skills that keep projects moving.</p>
+    <div class="stack-grid">
+
+      <div class="stack-card">
+        <div class="cat">Data &amp; Streaming</div>
+        <ul>
+          <li>Apache Kafka</li>
+          <li>ClickHouse</li>
+          <li>DuckDB</li>
+          <li>dlt</li>
+          <li>PySpark</li>
+        </ul>
+      </div>
+
+      <div class="stack-card">
+        <div class="cat">ML &amp; NLP</div>
+        <ul>
+          <li>FinBERT</li>
+          <li>Sentence-Transformers</li>
+          <li>LangGraph agents</li>
+          <li>Topic modelling (c-TF-IDF)</li>
+        </ul>
+      </div>
+
+      <div class="stack-card">
+        <div class="cat">Web &amp; Dashboards</div>
+        <ul>
+          <li>Streamlit</li>
+          <li>Folium</li>
+          <li>HTML / CSS / JS</li>
+          <li>Google Apps Script</li>
+        </ul>
+      </div>
+
+      <div class="stack-card">
+        <div class="cat">Programming &amp; Version Control</div>
+        <ul>
+          <li>Python</li>
+          <li>SQL</li>
+          <li>R</li>
+          <li>Git &amp; GitHub</li>
+        </ul>
+      </div>
+
+      <div class="stack-card">
+        <div class="cat">Dev &amp; Design Tools</div>
+        <ul>
+          <li>Docker</li>
+          <li>Visual Studio Code</li>
+          <li>Android Studio</li>
+          <li>Tableau</li>
+          <li>Figma</li>
+          <li>Canva</li>
+        </ul>
+      </div>
+
+      <div class="stack-card">
+        <div class="cat">Productivity &amp; Collaboration</div>
+        <ul>
+          <li>Microsoft 365</li>
+          <li>Jira / Trello</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="soft-skills">
+      <div class="cat">Soft Skills</div>
+      <div class="pill-row">
+        <span class="pill">Detail-Oriented</span>
+        <span class="pill">Strong Communicator</span>
+        <span class="pill">Problem-Solving</span>
+        <span class="pill">Time Management</span>
+        <span class="pill">Quick Learner</span>
+        <span class="pill">Team Player</span>
+        <span class="pill">Open-Minded, Friendly &amp; Courteous</span>
+        <span class="pill">Works Well Under Pressure</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="languages">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">05</span>
+      <h2>Languages</h2>
+    </div>
+    <div class="languages-grid">
+
+      <div class="language-card">
+        <h3>Burmese</h3>
+        <div class="level-label">Native</div>
+        <div class="level-bar"><span style="width: 100%;"></span></div>
+      </div>
+
+      <div class="language-card">
+        <h3>English</h3>
+        <div class="level-label">Fluent</div>
+        <div class="level-bar"><span style="width: 90%;"></span></div>
+      </div>
+
+      <div class="language-card">
+        <h3>German</h3>
+        <div class="level-label">B1 &middot; Intermediate</div>
+        <div class="level-bar"><span style="width: 55%;"></span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">06</span>
       <h2>Contact</h2>
     </div>
     <div class="contact-inner">
