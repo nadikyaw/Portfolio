@@ -203,6 +203,52 @@
   :root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
   :root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 
+  /* Side rails */
+  .side-rail {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    z-index: 50;
+  }
+
+  .side-rail-left { left: 40px; padding-bottom: 40px; }
+  .side-rail-right { right: 40px; padding-bottom: 40px; }
+
+  .side-rail a {
+    color: var(--muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .side-rail-left a:hover { color: var(--gold); transform: translateY(-3px); }
+
+  .side-rail svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .side-rail-line {
+    width: 1px;
+    height: 90px;
+    background: var(--border);
+  }
+
+  .side-rail-email {
+    writing-mode: vertical-rl;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+
+  .side-rail-right a:hover { color: var(--gold); transform: translateY(3px); }
+
+  @media (max-width: 1300px) {
+    .side-rail { display: none; }
+  }
+
   /* Hero */
   .hero {
     position: relative;
@@ -433,6 +479,24 @@
     gap: 32px;
   }
 
+  .project-card.is-extra {
+    display: none;
+  }
+
+  .project-card.is-extra.is-visible {
+    display: flex;
+  }
+
+  .projects-more {
+    display: none;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .projects-more.is-active {
+    display: flex;
+  }
+
   .project-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -648,42 +712,48 @@
   /* Contact */
   .contact-inner {
     max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
   }
 
-  .contact-inner p {
+  .contact-heading {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+
+  .contact-inner > p {
     color: var(--muted);
-    margin-bottom: 28px;
+    margin-bottom: 36px;
+  }
+
+  .contact-cta {
+    margin-bottom: 44px;
   }
 
   .contact-links {
     display: flex;
-    flex-direction: column;
-    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 32px;
     font-family: var(--font-sans);
   }
 
   .contact-links a {
     color: var(--navy);
-    font-size: 1rem;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: color 0.2s ease;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
   }
 
   .contact-links a:hover {
     color: var(--gold);
-  }
-
-  .contact-links a .arrow {
-    font-size: 0.85rem;
-    transition: transform 0.2s ease;
-  }
-
-  .contact-links a:hover .arrow {
-    transform: translateX(4px);
+    border-color: var(--gold);
   }
 
   /* Footer */
@@ -748,6 +818,33 @@
     </button>
   </nav>
 </header>
+
+<div class="side-rail side-rail-left">
+  <a href="https://github.com/nadikyaw" target="_blank" rel="noopener" aria-label="GitHub">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+    </svg>
+  </a>
+  <a href="https://www.linkedin.com/in/nadi-kyaw-74b457226/" target="_blank" rel="noopener" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+      <rect x="2" y="9" width="4" height="12"></rect>
+      <circle cx="4" cy="4" r="2"></circle>
+    </svg>
+  </a>
+  <a href="mailto:nadikyawndk8901@gmail.com" aria-label="Email">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+      <polyline points="22 6 12 13 2 6"></polyline>
+    </svg>
+  </a>
+  <div class="side-rail-line"></div>
+</div>
+
+<div class="side-rail side-rail-right">
+  <a class="side-rail-email" href="mailto:nadikyawndk8901@gmail.com">nadikyawndk8901@gmail.com</a>
+  <div class="side-rail-line"></div>
+</div>
 
 <section class="hero">
   <div class="container">
@@ -858,6 +955,9 @@
         <a class="link" href="https://github.com/nadikyaw/BurmaBooksLib" target="_blank" rel="noopener">View on GitHub &rarr;</a>
       </div>
 
+    </div>
+    <div class="projects-more">
+      <button id="projects-toggle" class="btn btn-outline" type="button">Show More</button>
     </div>
   </div>
 </section>
@@ -987,12 +1087,13 @@
       <h2>Contact</h2>
     </div>
     <div class="contact-inner">
-      <p>Happy to talk about data roles, collaborations, or whatever you're working on. Reach me here:</p>
+      <h3 class="contact-heading">Let's Talk</h3>
+      <p>Happy to talk about data roles, collaborations, or whatever you're working on — my inbox is always open.</p>
+      <a class="btn btn-primary contact-cta" href="mailto:nadikyawndk8901@gmail.com">Say Hello</a>
       <div class="contact-links">
-        <a href="mailto:nadikyawndk8901@gmail.com">Email <span class="arrow">&rarr;</span></a>
-        <a href="https://github.com/nadikyaw" target="_blank" rel="noopener">GitHub <span class="arrow">&rarr;</span></a>
-        <a href="https://www.linkedin.com/in/nadi-kyaw-74b457226/" target="_blank" rel="noopener">LinkedIn <span class="arrow">&rarr;</span></a>
-        <a href="assets/Nadi-Kyaw-CV.pdf" target="_blank" rel="noopener">Download CV <span class="arrow">&rarr;</span></a>
+        <a href="https://github.com/nadikyaw" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/nadi-kyaw-74b457226/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="assets/Nadi-Kyaw-CV.pdf" target="_blank" rel="noopener">Download CV</a>
       </div>
     </div>
   </div>
@@ -1013,6 +1114,25 @@
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
   });
+
+  const VISIBLE_PROJECT_COUNT = 4;
+  const projectCards = document.querySelectorAll('.projects-grid .project-card');
+  const projectsMore = document.querySelector('.projects-more');
+  const projectsToggle = document.getElementById('projects-toggle');
+
+  if (projectCards.length > VISIBLE_PROJECT_COUNT) {
+    projectCards.forEach((card, i) => {
+      if (i >= VISIBLE_PROJECT_COUNT) card.classList.add('is-extra');
+    });
+    projectsMore.classList.add('is-active');
+
+    projectsToggle.addEventListener('click', function () {
+      const expanded = projectsToggle.getAttribute('aria-expanded') === 'true';
+      projectCards.forEach((card) => card.classList.toggle('is-visible', !expanded));
+      projectsToggle.textContent = expanded ? 'Show More' : 'Show Less';
+      projectsToggle.setAttribute('aria-expanded', String(!expanded));
+    });
+  }
 
   const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
